@@ -1,4 +1,4 @@
-d3.json('data/gemColors.json').then(function(data){
+d3.json('data/colorCats.json').then(function(data){
   
   // Define the bins
   // we're having a cut-off at carathweight 100 and defining the number of bins at 17
@@ -32,8 +32,8 @@ d3.json('data/gemColors.json').then(function(data){
       .selectAll("line")
       .data(data)
       .join("line")
-      .attr("x1", d => x(d.x0) + 5)
-      .attr("x2", d => x(d.x0) + 5)
+      .attr("x1", d => x(d.value) + 5)
+      .attr("x2", d => x(d.value) + 5)
       .attr("y2", d => y(d.value))
       .attr("y1", height-10)
     // svg.append("g")
@@ -41,9 +41,9 @@ d3.json('data/gemColors.json').then(function(data){
     //   .attr("class", "axisWhite")
     //   .call(d3.axisBottom(x));
     svg.append("line")
-      .attr("x1", d => x(d.x0) + 5)
-      .attr("x2", d => x(d.x0) + 5)
-      .attr("y2", d => y(d.length))
+      .attr("x1", d => x(d.value) + 5)
+      .attr("x2", d => x(d.value) + 5)
+      .attr("y2", d.value)
       .attr("y1", height-10)
       .each(function(d) {this._current = d;} )
 });

@@ -1,6 +1,6 @@
 
 const fs = require('fs')
-let data =  JSON.parse(fs.readFileSync('../data/dataFiltered.json'));
+let data =  JSON.parse(fs.readFileSync('../../data/dataFiltered.json'));
 // console.log(data);
 let colorCount = [];
 
@@ -46,6 +46,7 @@ let gemColors =  [{
     blackGrey: [],
     whiteClear: []
 }];
+let colorCats = [];
 
 function analyzeData(){
     let colorNow;
@@ -200,9 +201,32 @@ function groupColors(colorCount){
     });
     console.log(gemColors);
 }
+function countGroups(){
+    colorCats.push({pink: gemColors[0].pink.length,
+                    red: gemColors[0].red.length,
+                    redOrange: gemColors[0].redOrange.length,
+                    orange: gemColors[0].orange.length,
+                    yellowOrange: gemColors[0].yellowOrange.length,
+                    yellow: gemColors[0].yellow.length,
+                    lightYellowGreen: gemColors[0].lightYellowGreen.length,
+                    yellowGreen: gemColors[0].yellowGreen.length,
+                    green: gemColors[0].green.length,
+                    darkGreen: gemColors[0].darkGreen.length,
+                    blueGreen: gemColors[0].blueGreen.length,
+                    lightblue: gemColors[0].lightBlue.length,
+                    blue: gemColors[0].blue.length,
+                    reddishBlue: gemColors[0].reddishBlue.length,
+                    purple: gemColors[0].purple.length,
+                    indigo: gemColors[0].indigo.length,
+                    rainbow: gemColors[0].rainbow.length,
+                    blackGrey: gemColors[0].blackGrey.length,
+                    whiteClear: gemColors[0].whiteClear.length,});
+};
+countGroups();
+console.log(colorCats);
 
 setTimeout(() => {
-    fs.writeFileSync('../data/gemColors.json', JSON.stringify(gemColors), 'utf8')
+    fs.writeFileSync('../../data/colorCats.json', JSON.stringify(colorCats), 'utf8')
 }, 5000)
 
 // var margin = ({top: 100, right: 0, bottom: 50, left: 0})
