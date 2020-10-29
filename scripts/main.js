@@ -164,7 +164,7 @@ d3.json('data/data.json').then(function(data){
       .attr("x1", d => x(d.x0) + 2.5)
       .attr("x2", d => x(d.x0) + 2.5)
       .attr("y2", d => y(d.length))
-      .attr("y1", height - d)
+      .attr("y1", d => y(height - d.length))
     // svg.append("g")
     //   .attr("transform", "translate(0," + height + ")")
     //   .attr("class", "axisWhite")

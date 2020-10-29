@@ -5,13 +5,13 @@ d3.json('data/colorCats.json').then(function(data){
 
   // define dimensions and margins for the graphic
   var margin = ({top: 10, right: 0, bottom: 10, left: 0})
-      width = 800,
+      width = 800 - margin.left - margin.right,
       height = 450 - margin.top - margin.bottom;
 
   // Define the scales
   var x = d3.scaleOrdinal()
-    .domain('pink','red','redOrange','orange','yellowOrange','yellow', 'lightYellowGreen','yellowGreen','green','darkGreen','blueGreen','lightBlue','blue','reddishBlue','purple','indigo','rainbow','blackGrey','whiteClear')
-    .range([margin.left, width - margin.right]);
+    .domain(['pink','red.','redOrange','orange','yellowOrange','yellow', 'lightYellowGreen','yellowGreen','green','darkGreen','blueGreen','lightBlue','blue','reddishBlue','purple','indigo','rainbow','blackGrey','whiteClear'])
+    .range([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
     // ['pink','red','redOrange','orange','yellowOrange','yellow', 'lightYellowGreen','yellowGreen','green','darkGreen','blueGreen','lightBlue','blue','reddishBlue','purple','indigo','rainbow','blackGrey','whiteClear']  
   var y = d3.scaleOrdinal()
     .domain([0, d3.max(data, d => d.value)])
@@ -41,9 +41,9 @@ d3.json('data/colorCats.json').then(function(data){
     //   .attr("class", "axisWhite")
     //   .call(d3.axisBottom(x));
     svg.append("line")
-      .attr("x1", d => x(d.value) + 5)
-      .attr("x2", d => x(d.value) + 5)
-      .attr("y2", d.value)
+      .attr("x1", width / 20)
+      .attr("x2", width / 20)
+      .attr("y2", d => y(d.value))
       .attr("y1", height-10)
       .each(function(d) {this._current = d;} )
 });
