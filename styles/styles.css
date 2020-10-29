@@ -121,6 +121,7 @@ p {
     border-bottom: 10px;
     border-style: solid;
     border-color: white;
+    background: black;
     justify-content: center;
     padding-left: 0px;
     padding-right: 0px;
