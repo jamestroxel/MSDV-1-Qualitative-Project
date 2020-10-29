@@ -4,7 +4,7 @@ d3.json('data/colorCats.json').then(function(data){
   // we're having a cut-off at carathweight 100 and defining the number of bins at 17
 
   // define dimensions and margins for the graphic
-  var margin = ({top: 50, right: 0, bottom: 10, left: 30})
+  var margin = ({top: 50, right: 0, bottom: 10, left: 0})
       width = 800 - margin.left - margin.right,
       height = 450 - margin.top - margin.bottom;
 
@@ -32,8 +32,8 @@ d3.json('data/colorCats.json').then(function(data){
       .selectAll("line")
       .data(data)
       .join("line")
-      .attr("x1", d => x(d.value) * 5)
-      .attr("x2", d => x(d.value) * 5)
+      .attr("x1", d => x(d.value) * 20)
+      .attr("x2", d => x(d.value) * 20)
       .attr("y2", d => y(d.value))
       .attr("y1", height-10)
     // svg.append("g")
@@ -41,8 +41,8 @@ d3.json('data/colorCats.json').then(function(data){
     //   .attr("class", "axisWhite")
     //   .call(d3.axisBottom(x));
     svg.append("line")
-      .attr("x1", width / 20)
-      .attr("x2", width / 20)
+      .attr("x1", d => x(d.value) * 20)
+      .attr("x2", d => x(d.value) * 20)
       .attr("y2", d => y(d.value))
       .attr("y1", height-10)
       .each(function(d) {this._current = d;} )
