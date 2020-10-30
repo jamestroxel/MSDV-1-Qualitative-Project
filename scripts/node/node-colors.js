@@ -26,25 +26,26 @@ let colorCount = [];
 //     whiteClear = [];
 
 let gemColors =  [{
-    pink: [],
+    DeepPink: [],
     red: [],
-    redOrange: [],
+    orangeRed: [],
+    DarkOrange: [],
     orange: [],
-    yellowOrange: [],
-    yellow: [],
-    lightYellowGreen: [],
-    yellowGreen: [],
-    green: [],
-    darkGreen: [],
-    blueGreen: [],
-    lightBlue: [],
+    gold: [],
+    greenyellow: [],
+    limegreen: [],
+    seagreen: [],
+    mediumseagreen: [],
+    lightseagreen: [],
+    deepskyblue: [],
+    dodgerblue: [],
     blue: [],
-    reddishBlue: [],
-    purple: [],
+    navy: [],
     indigo: [],
-    rainbow: [],
+    purple: [],
     blackGrey: [],
-    whiteClear: []
+    white: [],
+    rainbow: []
 }];
 let colorCats = [];
 
@@ -75,94 +76,194 @@ function analyzeData(){
     // sort by amount of items in the list
     colorCount.sort((a, b) => (a.count < b.count) ? 1 : -1)
     console.log(colorCount)
-    groupColors(colorCount);
 }
 analyzeData();
 // console.log(colorCount);
 
-function groupColors(colorCount){
-    console.log(colorCount);
-    colorCount.forEach(d=>{
+function groupColors(data){
+    console.log(data);
+    data.forEach(d=>{
         console.log(d.name);
-    let lowercaseName = d.name.toLowerCase()
+    let lowercaseName = d.color.toLowerCase()
+    let title = d.title
+    let longitude = d.longitude
+    let latitude = d.latitude
+    let caratWeight = d.caratWeight
+    let primaryImage = d.primaryImage
+    let filename = d.filename
     if (lowercaseName.includes("pink") 
         && !lowercaseName.includes("red")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].pink.push(lowercaseName)
+        gemColors[0].DeepPink.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("red") 
         && !lowercaseName.includes("orange")
         && !lowercaseName.includes("purple")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].red.push(lowercaseName)
+        gemColors[0].red.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("red") 
         && lowercaseName.includes("orange")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].redOrange.push(lowercaseName)
+        gemColors[0].orangeRed.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("orange") 
         || lowercaseName.includes("brown") 
         && !lowercaseName.includes("yellow")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].orange.push(lowercaseName)
+        gemColors[0].DarkOrange.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("yellow") 
         && lowercaseName.includes("orange")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].yellowOrange.push(lowercaseName)
+        gemColors[0].orange.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("yellow") 
         && !lowercaseName.includes("orange")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].yellow.push(lowercaseName)
+        gemColors[0].gold.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("yellow") 
         && lowercaseName.includes("green")) {
-        gemColors[0].lightYellowGreen.push(lowercaseName)
+        gemColors[0].greenyellow.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("yellow") 
         && lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].yellowGreen.push(lowercaseName)
+        gemColors[0].limegreen.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("green") 
         && !lowercaseName.includes("yellow") 
         && !lowercaseName.includes("dark")
         && !lowercaseName.includes("blue")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].green.push(lowercaseName)
+        gemColors[0].seagreen.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("green") 
         && lowercaseName.includes("dark") 
         && !lowercaseName.includes("yellow") 
         && !lowercaseName.includes("blue")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].darkGreen.push(lowercaseName)
+        gemColors[0].mediumseagreen.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("green") 
         && lowercaseName.includes("blue") 
         && !lowercaseName.includes("yellow")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].blueGreen.push(lowercaseName)
+        gemColors[0].lightseagreen.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("blue") 
         && lowercaseName.match("light") 
         && !lowercaseName.includes("yellow")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].lightBlue.push(lowercaseName)
+        gemColors[0].deepskyblue.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
-    if (lowercaseName.includes("blue") 
+    if (lowercaseName.includes("blue")  
         && !lowercaseName.includes("red") 
         && !lowercaseName.includes("yellow")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("purple")
         && !lowercaseName.includes("violet")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].blue.push(lowercaseName)
+        gemColors[0].dodgerblue.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
+    }
+    if (lowercaseName.includes("blue") 
+        && lowercaseName.includes("medium")
+        || lowercaseName.includes("dark")
+        && !lowercaseName.includes("red") 
+        && !lowercaseName.includes("yellow")
+        && !lowercaseName.includes("green")
+        && !lowercaseName.includes("purple")
+        && !lowercaseName.includes("violet")
+        && !lowercaseName.includes("gray")) {
+        gemColors[0].blue.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("blue")  
         && lowercaseName.includes("red")
@@ -170,37 +271,76 @@ function groupColors(colorCount){
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("dark")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].reddishBlue.push(lowercaseName)
+        gemColors[0].navy.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("purple")  
         || lowercaseName.includes("violet")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].purple.push(lowercaseName)
+        gemColors[0].indigo.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("indigo")  
         || lowercaseName.includes("violet")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].indigo.push(lowercaseName)
+        gemColors[0].purple.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("various")  
         || lowercaseName.includes("multi")
         || lowercaseName.includes("rainbow")) {
-        gemColors[0].rainbow.push(lowercaseName)
+        gemColors[0].rainbow.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
-    if (lowercaseName.includes("white")  
+    if (lowercaseName.includes("colorless")  
         || lowercaseName.includes("clear")
-        || lowercaseName.includes("colorless")) {
-        gemColors[0].whiteClear.push(lowercaseName)
+        || lowercaseName.includes("white")) {
+        gemColors[0].white.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     if (lowercaseName.includes("gray")  
         || lowercaseName.includes("black")
         || lowercaseName.includes("grey")) {
-        gemColors[0].blackGrey.push(lowercaseName)
+        gemColors[0].blackGrey.push({lowercaseName,
+            title,
+            longitude,
+            latitude,
+            caratWeight,
+            primaryImage,
+            filename})
     }
     });
     console.log(gemColors);
 }
+
+groupColors(data);
+
 // function countGroups(){
 //     colorCats.push({pink: gemColors[0].pink.length,
 //                     red: gemColors[0].red.length,
@@ -225,44 +365,66 @@ function groupColors(colorCount){
 // countGroups();
 // console.log(colorCats);
 function countGroups(){
-    colorCats.push({color: "pink",
-                    value: gemColors[0].pink.length},
+    colorCats.push({color: "DeepPink",
+                    value: gemColors[0].DeepPink.length,
+                    data: gemColors[0].DeepPink},
                     {color: "red",
-                    value: gemColors[0].red.length},
-                    {color: "redOrange",
-                    value: gemColors[0].redOrange.length},
+                    value: gemColors[0].red.length,
+                    data: gemColors[0].red},
+                    {color: "orangeRed",
+                    value: gemColors[0].orangeRed.length,
+                    data: gemColors[0].orangeRed},
+                    {color: "DarkOrange",
+                    value: gemColors[0].DarkOrange.length,
+                    data: gemColors[0].DarkOrange},
                     {color: "orange",
-                    value: gemColors[0].orange.length},
-                    {color: "yellowOrange",
-                    value: gemColors[0].yellowOrange.length},
-                    {color: "yellow",
-                    value: gemColors[0].yellow.length},
-                    {color: "lightYellowGreen",
-                    value: gemColors[0].lightYellowGreen.length},
-                    {color: "yellowGreen",
-                    value: gemColors[0].yellowGreen.length},
-                    {color: "green",
-                    value: gemColors[0].green.length},
-                    {color: "darkGreen",
-                    value: gemColors[0].darkGreen.length},
-                    {color: "blueGreen",
-                    value: gemColors[0].blueGreen.length},
-                    {color: "lightblue",
-                    value: gemColors[0].lightBlue.length},
+                    value: gemColors[0].orange.length,
+                    data: gemColors[0].orange},
+                    {color: "gold",
+                    value: gemColors[0].gold.length,
+                    data: gemColors[0].gold},
+                    {color: "greenyellow",
+                    value: gemColors[0].greenyellow.length,
+                    data: gemColors[0].greenyellow},
+                    {color: "limegreen",
+                    value: gemColors[0].limegreen.length,
+                    data: gemColors[0].limegreen},
+                    {color: "seagreen",
+                    value: gemColors[0].seagreen.length,
+                    data: gemColors[0].seagreen},
+                    {color: "mediumseagreen",
+                    value: gemColors[0].mediumseagreen.length,
+                    data: gemColors[0].mediumseagreen},
+                    {color: "lightseagreen",
+                    value: gemColors[0].lightseagreen.length,
+                    data: gemColors[0].lightseagreen},
+                    {color: "deepskyblue",
+                    value: gemColors[0].deepskyblue.length,
+                    data: gemColors[0].deepskyblue},
+                    {color: "dodgerblue",
+                    value: gemColors[0].dodgerblue.length,
+                    data: gemColors[0].dodgerblue},
                     {color: "blue",
-                    value: gemColors[0].blue.length},
-                    {color: "reddishBlue",
-                    value: gemColors[0].reddishBlue.length},
-                    {color: "purple",
-                    value: gemColors[0].purple.length},
+                    value: gemColors[0].blue.length,
+                    data: gemColors[0].blue},
+                    {color: "navy",
+                    value: gemColors[0].navy.length,
+                    data: gemColors[0].navy},
                     {color: "indigo",
-                    value: gemColors[0].indigo.length},
-                    {color: "rainbow",
-                    value: gemColors[0].rainbow.length},
-                    {color: "blackGrey", 
-                    value: gemColors[0].blackGrey.length},
-                    {color: "whiteClear",
-                    value: gemColors[0].whiteClear.length,});
+                    value: gemColors[0].indigo.length,
+                    data: gemColors[0].indigo},
+                    {color: "purple",
+                    value: gemColors[0].purple.length,
+                    data: gemColors[0].purple},
+                    {color: "url(#grad1)",
+                    value: gemColors[0].rainbow.length,
+                    data: gemColors[0].rainbow},
+                    {color: "#303030", 
+                    value: gemColors[0].blackGrey.length,
+                    data: gemColors[0].blackGrey},
+                    {color: "white",
+                    value: gemColors[0].white.length,
+                    data: gemColors[0].white});
 };
 countGroups();
 console.log(colorCats);
@@ -271,48 +433,3 @@ setTimeout(() => {
     fs.writeFileSync('../../data/colorCats.json', JSON.stringify(colorCats), 'utf8')
 }, 5000)
 
-// var margin = ({top: 100, right: 0, bottom: 50, left: 0})
-//       width = 800,
-//       height = 400 - margin.top - margin.bottom;
-
-// function makeChart (){
-//     var x = d3.scaleOrdinal()
-//         .domain('pink', 'red', 'redOrange')
-//         .range([pink, red, redOrange]);
-//     var y = d3.scaleLinear()
-//         .domain([0, d3.max(gemColors, d => d.length)])
-//         .range([height - margin.bottom, margin.top]);
-
-
-//     var svg = d3.select('#viz')
-//         .append('svg')
-//         .attr('width', width)
-//         .attr('height', height)
-//         .attr("fill", "white");
-    
-//     // attach a graphic element, and append rectangles to it
-//     svg.append("g")
-//         .attr("stroke", "white")
-//         .attr("stroke-linecap", "round")
-//         .attr("stroke-width", 10)
-//         .selectAll("line")
-//         .data(gemColors[0].length)
-//         .join("line")
-//         .attr("x1", d => x(d.x0) + 5)
-//         .attr("x2", d => x(d.x0) + 5)
-//         .attr("y2", d => y(d.length))
-//         .attr("y1", height - 10)
-//     // svg.append("g")
-//     //   .attr("transform", "translate(0," + height + ")")
-//     //   .attr("class", "axisWhite")
-//     //   .call(d3.axisBottom(x));
-//     svg.append("line")
-//         .attr("x1", d => x(d.x0) + 5)
-//         .attr("x2", d => x(d.x0) + 5)
-//         .attr("y2", d => y(d.length))
-//         .attr("y1", height - 10)
-//         .each(function(d) {this._current = d;} )
-// }
-// makeChart();
-
-  
