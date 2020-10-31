@@ -44,7 +44,7 @@ d3.json('data/colorCats.json').then(function(data){
       .attr("width", 100)
       .attr("rx", 50)
       .attr("y", d => y(d.value))
-      .attr("height", d => y(0) - y(d.value) + 150)
+      .attr("height", d => y(0) - y(d.value) + 125)
       .on("mouseover", function() {
         d3.select('#toolTip')
             .selectAll("text")
