@@ -15,10 +15,41 @@ d3.json('data/colorCats.json').then(function(data){
   // var x = d3.scaleOrdinal()
   //   .domain(['pink','red.','redOrange','orange','yellowOrange','yellow', 'lightYellowGreen','yellowGreen','green','darkGreen','blueGreen','lightBlue','blue','reddishBlue','purple','indigo','rainbow','blackGrey','whiteClear'])
   //   .range([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-  
   // const toolTip = d3.select('#toolTip')
   //   .append(text)
-
+  var tooltip = d3.select("#toolTip")
+  .enter().append("p")
+  .style("opacity", 0)
+  .attr("class", "tooltip")
+  .enter().append("img")
+  .attr('width', 390)
+  .attr('height', 100)
+  .style("opacity", 0)
+  .attr("class", "tooltip")
+  
+  // Three function that change the tooltip when user hover / move / leave a cell
+  var mouseover = function() {
+    d3.select('#toolTip')
+    .selectAll("text")
+    .data(data)
+    .join("text")
+    .attr('class', 'toolTip')
+    .attr('fill', 'white')
+    // .attr('text-anchor', 'middle')
+    .text(function(d) { 
+      const title = d.data[0].title;
+      return title; })
+        .selectAll("img")
+        .data(data)
+        .join("img")
+        .attr('class', 'toolTip')
+        // .attr('text-anchor', 'middle')
+        .attr('src', (function(d) { return './downloads/' + d.data[0].filename; }))
+  };
+  var mouseleave = function(d) {
+    tooltip
+      .style("opacity", 0)
+  }
   const xScale = d3.scaleBand()
     .domain(data.map(d => d.color))
     .range([margin.left, width * .8])
@@ -32,7 +63,7 @@ d3.json('data/colorCats.json').then(function(data){
     .append('svg')
     .attr('width', width)
     .attr('height', height);
-    // attach a graphic element, and append rectangles to it
+
     svg.append("g")
       .selectAll("rect")
       .data(data)
@@ -45,16 +76,18 @@ d3.json('data/colorCats.json').then(function(data){
       .attr("rx", 50)
       .attr("y", d => y(d.value))
       .attr("height", d => y(0) - y(d.value) + 125)
-      .on("mouseover", function() {
-        d3.select('#toolTip')
-            .selectAll("text")
-            .data(data)
-            .join("text")
-            .attr('class', 'toolTip')
-            .attr('fill', 'white')
-            // .attr('text-anchor', 'middle')
-            .text(function(d) { return d.data[0].title; })
-      });
+      .on("mouseover", mouseover)
+      .on("mouseleave", mouseleave)
+      // .on("mouseover", function() {
+        // d3.select('#toolTip')
+            // .selectAll("text")
+            // .data(data)
+            // .join("text")
+            // .attr('class', 'toolTip')
+            // .attr('fill', 'white')
+            // // .attr('text-anchor', 'middle')
+            // .text(function(d) { return d.data[0].title; })
+      // });
     svg.append("g")
       .selectAll("text")
       .data(data)
@@ -129,22 +162,11 @@ d3.json('data/colorCats.json').then(function(data){
 ///////// Dashboard Color Chart ////////
 d3.json('data/colorCats.json').then(function(data){
   
-  // Define the bins
-  // we're having a cut-off at carathweight 100 and defining the number of bins at 17
+  var margin = ({top: 0, right: 0, bottom: 25, left: 0})
+      width = 430 - margin.left - margin.right,
+      height = 150 - margin.top - margin.bottom;
+  
 
-  // define dimensions and margins for the graphic
-  var margin = ({top: 0, right: 0, bottom: 0, left: 0})
-      width = 100 - margin.left - margin.right,
-      height = 100 - margin.top - margin.bottom;
-  
-  // Define the scales
-
-  // ORDINAL IS NOT NECESSARY
-  
-  // var x = d3.scaleOrdinal()
-  //   .domain(['pink','red.','redOrange','orange','yellowOrange','yellow', 'lightYellowGreen','yellowGreen','green','darkGreen','blueGreen','lightBlue','blue','reddishBlue','purple','indigo','rainbow','blackGrey','whiteClear'])
-  //   .range([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-  
   // const toolTip = d3.select('#toolTip')
   //   .append(text)
 
@@ -159,15 +181,15 @@ d3.json('data/colorCats.json').then(function(data){
   .append('svg')
   .attr('width', width)
   .attr('height', height);
-  // attach a graphic element, and append rectangles to it
+  
   svg1.append("g")
     .selectAll("rect")
     .data(data)
     .join("rect")
     .attr("fill", function(d) { return d.color; })
     .attr("x", function(d){return xScale(d.color) })
-    .attr("width", 10)
-    .attr("rx", 5)
+    .attr("width", 22)
+    .attr("rx", 11)
     .attr("y", d => y(d.value))
-    .attr("height", d => y(0) - y(d.value) + 150)
+    .attr("height", d => y(0) - y(d.value) + 35)
   });

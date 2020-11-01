@@ -9,13 +9,13 @@
     <script src="https://d3js.org/d3-geo-projection.v3.min.js"></script>
     <script src="https://d3js.org/d3-geo.v2.min.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;800&display=swap" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@900&display=swap" rel="stylesheet"> -->
 </head>
 <body>
     <div class="container">
         <div class="item">
-            <h2>Color properties of gem collection data that includes information for name, color, carat weight, geolocation points, and&nbsp;photographic documentation  </h2>
+            <h2>Color properties of gem collection data that includes information on name, color, carat weight, geolocation points, and&nbsp;photographic documentation  </h2>
         </div>
         <div id="viz" class="mainSvgItem"></div>
     </div>
@@ -23,8 +23,8 @@
         <h1 class="mapTitle">Smithsonian Rock Ranger</h1>
     </div>
     <div class="dashboard">
-        <div class="item">
-            <p id="toolTip" class="toolTip"></p>
+        <div id="toolTip" class="item">
+            <!-- <p id="toolTip" class="toolTip"></p> -->
         </div>
         <!-- <div class="item">
             <img src="downloads/NMNH-10k0025-G9022-00-nr.jpg" width="350" height="">
@@ -36,33 +36,34 @@
         <div class="ranger">
             <div class="meter" id="viz3"></div>
             <div class="meterScale">
-                <svg viewBox="0 10 405 50" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="white" stroke-width="0" stroke-linecap="round">
-                    <circle cx=".75" cy="25" r=".5" fill="white"/>
-                    <circle cx="20.75" cy="25" r="1" fill="white"/>
-                    <circle cx="40.5" cy="25" r="1.5" fill="white"/>
-                    <circle cx="62.25" cy="25" r="2" fill="white"/>
-                    <circle cx="83" cy="25" r="2.5" fill="white"/>
-                    <circle cx="103.75" cy="25" r="3" fill="white"/>
-                    <circle cx="124.5" cy="25" r="3.5" fill="white"/>
-                    <circle cx="145.25" cy="25" r="4" fill="white"/>
-                    <circle cx="166" cy="25" r="4.5" fill="white"/>
-                    <circle cx="186.75" cy="25" r="5" fill="white"/>
-                    <circle cx="207.5" cy="25" r="5.5" fill="white"/>
-                    <circle cx="228.25" cy="25" r="6" fill="white"/>
-                    <circle cx="249" cy="25" r="6.5" fill="white"/>
-                    <circle cx="269.75" cy="25" r="7" fill="white"/>
-                    <circle cx="290.5" cy="25" r="7.5" fill="white"/>
-                    <circle cx="311.25" cy="25" r="8" fill="white"/>
-                    <circle cx="332" cy="25" r="8.5" fill="white"/>
-                    <circle cx="352.75" cy="25" r="9" fill="white"/>
-                    <circle cx="373.5" cy="25" r="9.5" fill="white"/>
-                    <circle cx="394.25" cy="25" r="10" fill="white"/>
+                <p class="meterText">Carat Weight</p>
+                <svg viewBox="0 0 405 191" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke-width="1" stroke-linecap="round">
+                    <circle cx=".75" cy="25" r=".5" stroke="#303030"/>
+                    <circle cx="20.75" cy="25" r="1" stroke="#303030"/>
+                    <circle cx="40.5" cy="25" r="1.5" stroke="#303030"/>
+                    <circle cx="62.25" cy="25" r="2" stroke="#303030"/>
+                    <circle cx="83" cy="25" r="2.5" stroke="#303030"/>
+                    <circle cx="103.75" cy="25" r="3" stroke="#303030"/>
+                    <circle cx="124.5" cy="25" r="3.5" stroke="#303030"/>
+                    <circle cx="145.25" cy="25" r="4" stroke="#303030"/>
+                    <circle cx="166" cy="25" r="4.5" stroke="#303030"/>
+                    <circle cx="186.75" cy="25" r="5" stroke="#303030"/>
+                    <circle cx="207.5" cy="25" r="5.5" stroke="#303030"/>
+                    <circle cx="228.25" cy="25" r="6" stroke="#303030"/>
+                    <circle cx="249" cy="25" r="6.5" stroke="#303030"/>
+                    <circle cx="269.75" cy="25" r="7" stroke="#303030"/>
+                    <circle cx="290.5" cy="25" r="7.5" stroke="#303030"/>
+                    <circle cx="311.25" cy="25" r="8" stroke="#303030"/>
+                    <circle cx="332" cy="25" r="8.5" stroke="#303030"/>
+                    <circle cx="352.75" cy="25" r="9" stroke="#303030"/>
+                    <circle cx="373.5" cy="25" r="9.5" stroke="#303030"/>
+                    <circle cx="394.25" cy="25" r="10" stroke="#303030"/>
                     </g>
                 </svg>
                 <svg class="svgItem" viewBox="5 0 153 110" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="10%" y2="200%">
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="25%" y2="200%">
                         <stop offset="5.88%" style="stop-color:DeepPink;stop-opacity:1" />
                         <stop offset="11.76%" style="stop-color:red;stop-opacity:1" />
                         <stop offset="17.64%" style="stop-color:orangeRed;stop-opacity:1" />
@@ -83,35 +84,13 @@
                         </linearGradient>
                     </defs>
                     <g>
-                    <rect x="5" y="10" width="10" height="50" rx="5" fill="DeepPink"/>
-                    <rect x="12.5" y="20" width="10" height="40" rx="5" fill="red"/>
-                    <rect x="20" y="15" width="10" height="45" rx="5" fill="orangeRed"/>
-                    <rect x="27.5" y="22" width="10" height="38" rx="5" fill="DarkOrange"/>
-                    <rect x="35" y="23" width="10" height="37" rx="5" fill="orange"/>
-                    <rect x="42.5" y="23" width="10" height="37" rx="5" fill="gold"/>
-                    <rect x="50" y="15" width="10" height="45" rx="5" fill="greenyellow"/>
-                    <rect x="57.5" y="0" width="10" height="60" rx="5" fill="limegreen"/>
-                    <rect x="65" y="10" width="10" height="50" rx="5" fill="seagreen"/>
-                    <rect x="72.5" y="13" width="10" height="47" rx="5" fill="mediumseagreen"/>
-                    <rect x="80" y="17" width="10" height="43" rx="5" fill="lightseagreen"/>
-                    <rect x="87.5" y="21" width="10" height="39" rx="5" fill="deepskyblue"/>
-                    <rect x="95" y="018" width="10" height="42" rx="5" fill="dodgerblue"/>
-                    <rect x="102.5" y="30" width="10" height="30" rx="5" fill="blue"/>
-                    <rect x="110" y="21" width="10" height="39" rx="5" fill="navy"/>
-                    <rect x="117.5" y="27" width="10" height="33" rx="5" fill="indigo"/>
-                    <rect x="125" y="22" width="10" height="38" rx="5" fill="purple"/>
-                    <rect x="132.5" y="18" width="10" height="42" rx="5" fill="white"/>
-                    <rect x="140" y="35" width="10" height="25" rx="5" fill="#303030"/>
-                    <rect x="147.5" y="40" width="10" height="20" rx="5" fill="url(#grad1)"/>
-                    
-                    </g>
                 </svg>
             </div>
-            <div class="meter" id="viz4"></div>
             <!-- <div class="meter" id="viz4"></div> -->
             <!-- <div class="meter" id="viz5"></div> -->
         </div>
     </div>
+    <div class="colorMeter" id="viz4"></div>
     <h1 class="dashTitle">Start looking</h1>
     <h1 class="rockRanger">Smithsonian Rock Ranger</h1>
     <!-- <script src="scripts/main.js"></script> -->

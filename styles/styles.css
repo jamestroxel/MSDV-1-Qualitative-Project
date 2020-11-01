@@ -21,20 +21,21 @@ p {
     margin-left: 0px;
     margin-right: 0px;
     padding: 0px;
-    font-weight: bold;
+    font-weight: 400;
     font-family: 'Epilogue', sans-serif;
     color: white;
     line-height: 1.5em;
 }   
 .toolTip {
-    /* display: flex; */
-    /* width: 100%; */
+    display: inline-flex;
+    width: 100%;
     font-size: 18;
-    margin-top: 25px;
+    margin-top: 50px;
     margin-left: 0px;
     margin-right: 0px;
-    padding: 0px;
-    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: 400;
     font-family: 'Epilogue', sans-serif;
     color: white;
     line-height: 1.5em;
@@ -111,6 +112,7 @@ p {
     /* margin-top: 100px;
     margin-left: 2.5px; */
     margin-left: 30px;
+    margin-bottom: -5px;
     padding: 0px;
 }
 .svgItem{
@@ -124,9 +126,6 @@ p {
     margin-left: 2.5px; */
     margin-bottom: 0px;
     padding: 0px;
-}
-.border-gradient-green {
-    border-image-source: linear-gradient(to left, #00C853, #B2FF59);
 }
 .ranger{
     position: fixed;
@@ -146,7 +145,7 @@ p {
     padding-right: 0px;
     padding-top: 0px;
     margin: 0px;
-    /* padding: 0px; */
+    /* padding: 0px; */ 
 }
 h2 {
     display: flex;
@@ -156,7 +155,8 @@ h2 {
     margin-left: 30px;
     margin-right: 0;
     line-height: 1.5em;
-    font-family: 'Epilogue', sans-serif;
+    font-weight: 400;
+    font-family: 'Epilogue', sans-serif; 
     color: white;
 }
 
@@ -173,7 +173,7 @@ h2 {
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
-    font-weight: bold;
+    font-weight: 400;
     font-family: 'Epilogue', sans-serif;
     color: white;
     background: black;
@@ -195,7 +195,7 @@ h2 {
     padding-right: 10px;
     padding-bottom: 0px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 400;
     font-family: 'Epilogue', sans-serif;
     color: white;
     background: black;
@@ -206,7 +206,7 @@ h2 {
     margin-bottom: 50px;
     margin-left: 44px;
     padding: 10px;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-family: 'Epilogue', sans-serif;
     font-size: 1em;
     color: white;
@@ -216,16 +216,36 @@ h2 {
 }
 .meter {
     display: flex;
-    margin: 0px;
+    margin: -5px;
     justify-content: center;
-
-
-    /* line-height: 3em; */
+}
+.colorMeter {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    margin: 55px;
+    justify-content: center;
 }
 .meterScale{
-    /* margin-top: 0px; */
-    margin:25px;
-    margin-bottom: 20px;
+    height: 50px;
+    border-left:#303030;
+    border-right:#303030;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    border-width: 1px;
+    border-style: dashed; 
+    padding:10px;
+    margin-top: 10px;
+    margin:15px;
+}
+.meterText {
+    margin-top:-5px;
+    margin-bottom:-10px;
+    font-family: 'Epilogue', sans-serif;
+    font-size: .75em;
+    color: #303030;
 }
 label {
     display: inline-flex;
@@ -234,7 +254,7 @@ label {
     margin-bottom: 0.67em;
     margin-left: 50px;
     margin-right: 0;
-    font-weight: bold;
+    /* font-weight: bold; */
     font-family: 'Epilogue', sans-serif;
     color: white;
 }
