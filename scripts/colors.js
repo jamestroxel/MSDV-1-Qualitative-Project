@@ -18,34 +18,35 @@ d3.json('data/colorCats.json').then(function(data){
   // const toolTip = d3.select('#toolTip')
   //   .append(text)
   var tooltip = d3.select("#toolTip")
-  .enter().append("p")
-  .style("opacity", 0)
-  .attr("class", "tooltip")
-  .enter().append("img")
-  .attr('width', 390)
-  .attr('height', 100)
-  .style("opacity", 0)
-  .attr("class", "tooltip")
+  .append("div")
+  .style("color", "white")
+  // .style("opacity", 0)
+  // .attr("class", "tooltip")
+  // .enter().append("img")
+  // .attr('width', 390)
+  // .attr('height', 100)
+  // .style("opacity", 0)
+  // .attr("class", "tooltip")
   
   // Three function that change the tooltip when user hover / move / leave a cell
-  var mouseover = function() {
-    d3.select('#toolTip')
-    .selectAll("text")
-    .data(data)
-    .join("text")
-    .attr('class', 'toolTip')
-    .attr('fill', 'white')
-    // .attr('text-anchor', 'middle')
-    // .text(function(d) { 
-    //   const title = d.data[0].title;
-    //   return title; })
-        .selectAll("img")
-        .data(data)
-        .join("img")
-        .attr('class', 'toolTip')
-        // .attr('text-anchor', 'middle')
-        .attr('src', (function(d) { return './downloads/' + d.data[0].filename; }))
-  };
+  // var mouseover = function(event, d) {
+  //   d3.select('#toolTip')
+  //   .selectAll("text")
+  //   .data(data)
+  //   .join("text")
+  //   .attr('class', 'toolTip')
+  //   .attr('fill', 'white')
+  //   // .attr('text-anchor', 'middle')
+  //   // .text(function(d) { 
+  //   //   const title = d.data[0].title;
+  //   //   return title; })
+  //       .selectAll("img")
+  //       .data(data)
+  //       .join("img")
+  //       .attr('class', 'toolTip')
+  //       // .attr('text-anchor', 'middle')
+  //       .attr('src', (function(d) { return './downloads/' + d.data[0].filename; }))
+  // };
   var mouseleave = function(d) {
     tooltip
       .style("opacity", 0)
@@ -76,18 +77,21 @@ d3.json('data/colorCats.json').then(function(data){
       .attr("rx", 50)
       .attr("y", d => y(d.value))
       .attr("height", d => y(0) - y(d.value) + 125)
-      .on("mouseover", mouseover)
+      //.on("mouseover", mouseover)
       .on("mouseleave", mouseleave)
-      // .on("mouseover", function() {
+      .on("mouseover", function(event, d) {
+        return tooltip.style("visibility", "visible")
+                      .text(d.data[0])
+
         // d3.select('#toolTip')
-            // .selectAll("text")
-            // .data(data)
-            // .join("text")
-            // .attr('class', 'toolTip')
-            // .attr('fill', 'white')
-            // // .attr('text-anchor', 'middle')
-            // .text(function(d) { return d.data[0].title; })
-      // });
+        //     .selectAll("text")
+        //     .data(data)
+        //     .join("text")
+        //     .attr('class', 'toolTip')
+        //     .attr('fill', 'white')
+        //     // .attr('text-anchor', 'middle')
+        //     .text(function(d) { return d.data[0].title; })
+      });
     svg.append("g")
       .selectAll("text")
       .data(data)
