@@ -237,12 +237,15 @@ h2 {
     border-width: 1px;
     border-style: dashed; 
     padding:10px;
-    margin-top: 10px;
+    margin-top: 0px;
     margin:15px;
 }
 .meterText {
+    display: block;
     margin-top:-5px;
-    margin-bottom:-10px;
+    margin-bottom:0px;
+    padding: 0px;
+    text-justify: auto;
     font-family: 'Epilogue', sans-serif;
     font-size: .75em;
     color: #303030;
