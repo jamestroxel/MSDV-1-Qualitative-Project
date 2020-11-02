@@ -49,7 +49,7 @@ d3.json('data/colorCats.json').then(function(data){
   // };
   var mouseleave = function(d) {
     tooltip
-      .style("opacity", 0)
+      .style("visibility", "hidden")
   }
   const xScale = d3.scaleBand()
     .domain(data.map(d => d.color))
@@ -78,19 +78,22 @@ d3.json('data/colorCats.json').then(function(data){
       .attr("y", d => y(d.value))
       .attr("height", d => y(0) - y(d.value) + 125)
       //.on("mouseover", mouseover)
-      .on("mouseleave", mouseleave)
-      .on("mouseover", function(event, d) {
+      // .on("mouseleave", mouseleave)
+      .on("click", function(event, d) {
+        tooltip
+        .html("")
+        .append("div")
+        .attr('class', 'toolTipData')
+        .selectAll("text")
+        .data(d.data)
+        .join("text")
+        .text(function(d) { return "Name: " + d.title + " " + "Carat Weight: " + d.caratWeight + " "; })
+        .append('img')
+        .attr('class', 'toolTip')
+        .attr('width', 390)
+        .attr('height', 100)
+        .attr('src', function(d) {return 'downloads/' + d.filename; });
         return tooltip.style("visibility", "visible")
-                      .text(d.data[0])
-
-        // d3.select('#toolTip')
-        //     .selectAll("text")
-        //     .data(data)
-        //     .join("text")
-        //     .attr('class', 'toolTip')
-        //     .attr('fill', 'white')
-        //     // .attr('text-anchor', 'middle')
-        //     .text(function(d) { return d.data[0].title; })
       });
     svg.append("g")
       .selectAll("text")
