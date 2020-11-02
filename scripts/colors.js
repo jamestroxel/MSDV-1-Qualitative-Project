@@ -36,9 +36,9 @@ d3.json('data/colorCats.json').then(function(data){
     .attr('class', 'toolTip')
     .attr('fill', 'white')
     // .attr('text-anchor', 'middle')
-    .text(function(d) { 
-      const title = d.data[0].title;
-      return title; })
+    // .text(function(d) { 
+    //   const title = d.data[0].title;
+    //   return title; })
         .selectAll("img")
         .data(data)
         .join("img")
@@ -106,7 +106,7 @@ d3.json('data/colorCats.json').then(function(data){
       .text(function(d) { return d.value; });
       
   ///// Dashboard Carat Chart /////////
-
+  // let bins;    
   var caratWeights =[];
   var colors =[];
   d3.json('data/data.json').then(function(data){ 
@@ -152,10 +152,6 @@ d3.json('data/colorCats.json').then(function(data){
         .attr("y2", d => y(d.length))
         .attr("y1", d => y(height - d.length))
       svg.append("line")
-        .attr("x1", d => x(d.x0) + 2.5)
-        .attr("x2", d => x(d.x0) + 2.5)
-        .attr("y2", d => y(d.length))
-        .attr("y1", height - d)
         .each(function(d) {this._current = d;} )
   });
 });
