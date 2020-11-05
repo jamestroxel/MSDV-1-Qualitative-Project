@@ -17,9 +17,14 @@ d3.json('data/colorCats.json').then(function(data){
   //   .range([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
   // const toolTip = d3.select('#toolTip')
   //   .append(text)
+  // var callTo = d3.select("#data")
+  // .append("div")
+  // .style("color", "white")
+
   var tooltip = d3.select("#toolTip")
   .append("div")
   .style("color", "white")
+  // .attr("z-index", 9999)
   // .style("opacity", 0)
   // .attr("class", "tooltip")
   // .enter().append("img")
@@ -47,10 +52,10 @@ d3.json('data/colorCats.json').then(function(data){
   //       // .attr('text-anchor', 'middle')
   //       .attr('src', (function(d) { return './downloads/' + d.data[0].filename; }))
   // };
-  var mouseleave = function(d) {
-    tooltip
-      .style("visibility", "hidden")
-  }
+  // var mouseleave = function(d) {
+  //   tooltip
+  //     .style("visibility", "hidden")
+  // }
   const xScale = d3.scaleBand()
     .domain(data.map(d => d.color))
     .range([margin.left, width * .8])
@@ -77,23 +82,41 @@ d3.json('data/colorCats.json').then(function(data){
       .attr("rx", 50)
       .attr("y", d => y(d.value))
       .attr("height", d => y(0) - y(d.value) + 125)
-      //.on("mouseover", mouseover)
-      // .on("mouseleave", mouseleave)
+      .on("mouseover", function(event, d) {
+        tooltip
+        .html("")
+        .append("div")
+        .attr('class', 'toolTipData')
+        .selectAll("text")
+        .data(d.data)
+        .join("text")
+        .attr('class', 'data')
+        .style('color', d.color)
+        .html(function(d) { return "<b>" + d.title + "</b>" + "<br/>" + "<br/>"})
+        // .selectAll("rect")
+        // .attr("z-index", 1000)
+       })
       .on("click", function(event, d) {
         tooltip
         .html("")
         .append("div")
         .attr('class', 'toolTipData')
-        // .attr('fill', function(d) { return d.color; })
+        // .style('color', d.color)
+        // .style("border-top", d.color)
+        // .style("border-style", "solid")
+        // .style("border-bottom-width", "0px")
+        // .style("border-left-width", "0px")
+        // .style("border-right-width", "0px")
+        // .style("border-top-width", "5px")
         .selectAll("text")
         .data(d.data)
         .join("text")
-        .html(function(d) { return  "Name: " + "<b>" + d.title + "</b>" + "<br/>" + "Carat Weight: " + "<b>" + d.caratWeight + "</b>" + "<br/>"  + "Photo:"; })
+        .html(function(d) { return  "Name: " + "<b>" + d.title + "</b>" + "<br/>" + "Carat Weight: " + "<b>" + d.caratWeight + "</b>" + "<br/>" + "Description: " + "<b>" + d.lowercaseName + "</b>" + "<br/>" + "Photo:"; })
         .append('img')
         .attr('class', 'toolTip')
-        .attr('width', 390)
+        .attr('width', 340)
         .attr('height', 100)
-        .attr('src', function(d) {return 'downloads/' + d.filename; });
+        .attr('src', function(d) {return 'downloads/' + d.filename; })
         return tooltip.style("visibility", "visible")
       });
     svg.append("g")

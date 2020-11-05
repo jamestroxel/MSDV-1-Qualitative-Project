@@ -30,8 +30,18 @@ p {
     font-family: 'Epilogue', sans-serif;
     font-size: 1em;
     line-height: 1.5em;
-    margin-top: 55px;
+    margin-top: 25px;
     margin-bottom: 0px;
+    padding-bottom: 10px;
+    padding-top: 25px;
+}  
+.data {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin-top: 55px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }  
 .toolTip {
     display: inline-flex;
@@ -42,8 +52,8 @@ p {
     margin-bottom: 50px;
     margin-left: 0px;
     margin-right: 0px;
-    /* padding-left: 5px;
-    padding-right: 5px; */
+    /* padding-left: 5px; */
+    padding-bottom: 25px;
     font-weight: 400;
     font-family: 'Epilogue', sans-serif;
     color: white;
@@ -91,17 +101,14 @@ p {
     overflow-y: scroll;
 }
 .chartTitle{
-    width: 100%;
-    justify-content: center;
     margin-top: 25px;
-    margin-bottom: 360px;
+    margin-left: 30px;
+    margin-bottom: 0px;
     /* margin: 0px; */
     padding: 0px;
-    overflow-y: scroll;
 }
 .item{
-    width: 350px;
-    justify-content: center;
+    width: 340px;
     margin-top: 25px;
     margin-bottom: 360px;
     /* margin: 0px; */
@@ -167,6 +174,7 @@ p {
 }
 h2 {
     display: flex;
+    width: 100%;
     font-size: 1.5em;
     margin-top: 50px;
     margin-bottom: 0.67em;
@@ -177,7 +185,25 @@ h2 {
     font-family: 'Epilogue', sans-serif; 
     color: white;
 }
-
+h3 {
+    height: 50px;
+    display: flex;
+    font-size: 1em;
+    margin-top: 25px;
+    margin-bottom: 0.67em;
+    margin-left: 0px;
+    margin-right: 0;
+    line-height: 1.5em;
+    font-weight: 400;
+    font-family: 'Epilogue', sans-serif; 
+    color: white;
+    border-bottom: #303030;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom-width: 1px;
+    border-style: dashed;
+}
 .mapTitle {
     display: flex;
     position: fixed;
