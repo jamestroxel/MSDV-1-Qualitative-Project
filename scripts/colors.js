@@ -20,10 +20,9 @@ d3.json('data/colorCats.json').then(function(data){
   // var callTo = d3.select("#data")
   // .append("div")
   // .style("color", "white")
-
   var tooltip = d3.select("#toolTip")
   .append("div")
-  .style("color", "white")
+  .style("color", "white");
   // .attr("z-index", 9999)
   // .style("opacity", 0)
   // .attr("class", "tooltip")
@@ -87,15 +86,31 @@ d3.json('data/colorCats.json').then(function(data){
         .html("")
         .append("div")
         .attr('class', 'toolTipData')
+        // .style('color', d.color)
+        // .style("border-top", d.color)
+        // .style("border-style", "solid")
+        // .style("border-bottom-width", "0px")
+        // .style("border-left-width", "0px")
+        // .style("border-right-width", "0px")
+        // .style("border-top-width", "5px")
         .selectAll("text")
         .data(d.data)
         .join("text")
-        .attr('class', 'data')
-        .style('color', d.color)
-        .html(function(d) { return "<b>" + d.title + "</b>" + "<br/>" + "<br/>"})
-        // .selectAll("rect")
-        // .attr("z-index", 1000)
-       })
+        .html(function(d) { return  "Name: " + "<b>" + d.title + "</b>" + "<br/>" + "Carat Weight: " + "<b>" + d.caratWeight + "</b>" + "<br/>" + "Description: " + "<b>" + d.lowercaseName + "</b>" + "<br/>" + "Photo:"; })
+        .append('img')
+        .attr('class', 'toolTip')
+        .attr('width', 340)
+        .attr('height', 100)
+        .attr('src', function(d) { 
+          if (d.filename == "NMNH-501014.jpg" 
+          || "NMNH-504077.jpg" 
+          || "NMNH-504085.jpg"
+          || "NMNH-NMNH-MS-2018-00018.jpg"
+          || "NMNH-NMNH-MS-2018-00019_screen.jpg"){  
+            return "downSamples/JPEG/placeholder-01.svg";
+          } else {return 'downSamples/JPEG/' + d.filename; }})
+        return tooltip.style("visibility", "visible") 
+      })
       .on("click", function(event, d) {
         tooltip
         .html("")
@@ -116,8 +131,15 @@ d3.json('data/colorCats.json').then(function(data){
         .attr('class', 'toolTip')
         .attr('width', 340)
         .attr('height', 100)
-        .attr('src', function(d) {return 'downloads/' + d.filename; })
-        return tooltip.style("visibility", "visible")
+        .attr('src', function(d) { 
+          if (d.filename == "NMNH-501014.jpg" 
+          || "NMNH-504077.jpg" 
+          || "NMNH-504085.jpg"
+          || "NMNH-NMNH-MS-2018-00018.jpg"
+          || "NMNH-NMNH-MS-2018-00019_screen.jpg"){  
+            return "downSamples/JPEG/placeholder-01.svg";
+          } else {return 'downSamples/JPEG/' + d.filename; }})
+        return tooltip.style("visibility", "visible") 
       });
     svg.append("g")
       .selectAll("text")
@@ -135,7 +157,7 @@ d3.json('data/colorCats.json').then(function(data){
       .attr("x", function(d){return xScale(d.color) + 50})
       .attr("y", d => y(d.value) +50)
       .text(function(d) { return d.value; });
-      
+
   ///// Dashboard Carat Chart /////////
   // let bins;    
   var caratWeights =[];
