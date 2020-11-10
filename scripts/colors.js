@@ -1,60 +1,13 @@
 d3.json('data/colorCats.json').then(function(data){
-  
-  // Define the bins
-  // we're having a cut-off at carathweight 100 and defining the number of bins at 17
 
-  // define dimensions and margins for the graphic
   var margin = ({top: 50, right: 0, bottom: 75, left: 0})
       width = 2000 - margin.left - margin.right,
       height = 800 - margin.top - margin.bottom;
   
-  // Define the scales
-
-  // ORDINAL IS NOT NECESSARY
-  
-  // var x = d3.scaleOrdinal()
-  //   .domain(['pink','red.','redOrange','orange','yellowOrange','yellow', 'lightYellowGreen','yellowGreen','green','darkGreen','blueGreen','lightBlue','blue','reddishBlue','purple','indigo','rainbow','blackGrey','whiteClear'])
-  //   .range([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-  // const toolTip = d3.select('#toolTip')
-  //   .append(text)
-  // var callTo = d3.select("#data")
-  // .append("div")
-  // .style("color", "white")
   var tooltip = d3.select("#toolTip")
   .append("div")
   .style("color", "white");
-  // .attr("z-index", 9999)
-  // .style("opacity", 0)
-  // .attr("class", "tooltip")
-  // .enter().append("img")
-  // .attr('width', 390)
-  // .attr('height', 100)
-  // .style("opacity", 0)
-  // .attr("class", "tooltip")
-  
-  // Three function that change the tooltip when user hover / move / leave a cell
-  // var mouseover = function(event, d) {
-  //   d3.select('#toolTip')
-  //   .selectAll("text")
-  //   .data(data)
-  //   .join("text")
-  //   .attr('class', 'toolTip')
-  //   .attr('fill', 'white')
-  //   // .attr('text-anchor', 'middle')
-  //   // .text(function(d) { 
-  //   //   const title = d.data[0].title;
-  //   //   return title; })
-  //       .selectAll("img")
-  //       .data(data)
-  //       .join("img")
-  //       .attr('class', 'toolTip')
-  //       // .attr('text-anchor', 'middle')
-  //       .attr('src', (function(d) { return './downloads/' + d.data[0].filename; }))
-  // };
-  // var mouseleave = function(d) {
-  //   tooltip
-  //     .style("visibility", "hidden")
-  // }
+ 
   const xScale = d3.scaleBand()
     .domain(data.map(d => d.color))
     .range([margin.left, width * .8])
@@ -63,7 +16,6 @@ d3.json('data/colorCats.json').then(function(data){
   .domain([0, d3.max(data, d => d.value)])
   .range([height - margin.bottom, margin.top]);
 
-    // create an svg container from scratch
   var svg = d3.select('#viz')
     .append('svg')
     .attr('width', width)
@@ -86,13 +38,6 @@ d3.json('data/colorCats.json').then(function(data){
         .html("")
         .append("div")
         .attr('class', 'toolTipData')
-        // .style('color', d.color)
-        // .style("border-top", d.color)
-        // .style("border-style", "solid")
-        // .style("border-bottom-width", "0px")
-        // .style("border-left-width", "0px")
-        // .style("border-right-width", "0px")
-        // .style("border-top-width", "5px")
         .selectAll("text")
         .data(d.data)
         .join("text")
@@ -102,27 +47,22 @@ d3.json('data/colorCats.json').then(function(data){
         .attr('width', 340)
         .attr('height', 100)
         .attr('src', function(d) { 
-          if (d.filename == "NMNH-501014.jpg" 
-          || "NMNH-504077.jpg" 
-          || "NMNH-504085.jpg"
-          || "NMNH-NMNH-MS-2018-00018.jpg"
-          || "NMNH-NMNH-MS-2018-00019_screen.jpg"){  
+          if (d.filename === "NMNH-501014.jpg" 
+          || d.filename === "NMNH-503014.jpg" 
+          || d.filename === "NMNH-504077.jpg"
+          || d.filename === "NMNH-NMNH-MS-2018-00018.jpg" 
+          || d.filename === "NMNH-NMNH-MS-2018-00019_screen.jpg"
+          || d.filename === "NMNH-504085.jpg"
+          || d.filename === null){  
             return "downSamples/JPEG/placeholder-01.svg";
           } else {return 'downSamples/JPEG/' + d.filename; }})
-        return tooltip.style("visibility", "visible") 
+          return tooltip.style("visibility", "visible") 
       })
       .on("click", function(event, d) {
         tooltip
         .html("")
         .append("div")
         .attr('class', 'toolTipData')
-        // .style('color', d.color)
-        // .style("border-top", d.color)
-        // .style("border-style", "solid")
-        // .style("border-bottom-width", "0px")
-        // .style("border-left-width", "0px")
-        // .style("border-right-width", "0px")
-        // .style("border-top-width", "5px")
         .selectAll("text")
         .data(d.data)
         .join("text")
@@ -131,12 +71,14 @@ d3.json('data/colorCats.json').then(function(data){
         .attr('class', 'toolTip')
         .attr('width', 340)
         .attr('height', 100)
-        .attr('src', function(d) { 
-          if (d.filename == "NMNH-501014.jpg" 
-          || "NMNH-504077.jpg" 
-          || "NMNH-504085.jpg"
-          || "NMNH-NMNH-MS-2018-00018.jpg"
-          || "NMNH-NMNH-MS-2018-00019_screen.jpg"){  
+        .attr('src', function(d) {
+          if (d.filename === "NMNH-501014.jpg" 
+          || d.filename === "NMNH-503014.jpg" 
+          || d.filename === "NMNH-504077.jpg"
+          || d.filename === "NMNH-NMNH-MS-2018-00018.jpg" 
+          || d.filename === "NMNH-NMNH-MS-2018-00019_screen.jpg"
+          || d.filename === "NMNH-504085.jpg"
+          || d.filename === null){  
             return "downSamples/JPEG/placeholder-01.svg";
           } else {return 'downSamples/JPEG/' + d.filename; }})
         return tooltip.style("visibility", "visible") 
@@ -215,10 +157,6 @@ d3.json('data/colorCats.json').then(function(data){
       width = 430 - margin.left - margin.right,
       height = 150 - margin.top - margin.bottom;
   
-
-  // const toolTip = d3.select('#toolTip')
-  //   .append(text)
-
   const xScale = d3.scaleBand()
     .domain(data.map(d => d.color))
     .range([margin.left, width * .8])
