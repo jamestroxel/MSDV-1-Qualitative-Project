@@ -1,13 +1,15 @@
 d3.json('data/colorCats.json').then(function(data){
-
+  
   var margin = ({top: 50, right: 0, bottom: 75, left: 0})
-      width = 2000 - margin.left - margin.right,
-      height = 800 - margin.top - margin.bottom;
+  width = 2000 - margin.left - margin.right,
+  height = 800 - margin.top - margin.bottom;
+  
   
   var tooltip = d3.select("#toolTip")
   .append("div")
   .style("color", "white");
- 
+  
+
   const xScale = d3.scaleBand()
     .domain(data.map(d => d.color))
     .range([margin.left, width * .8])
@@ -41,7 +43,10 @@ d3.json('data/colorCats.json').then(function(data){
         .selectAll("text")
         .data(d.data)
         .join("text")
-        .html(function(d) { return  "Name: " + "<b>" + d.title + "</b>" + "<br/>" + "Carat Weight: " + "<b>" + d.caratWeight + "</b>" + "<br/>" + "Description: " + "<b>" + d.lowercaseName + "</b>" + "<br/>" + "Photo:"; })
+        .html(function(d) { return  "Name: " + "<b>" + d.title + "</b>" + "<br/>" 
+        + "Carat Weight: " + "<b>" + d.caratWeight + "</b>" + "<br/>" 
+        + "Description: " + "<b>" + d.lowercaseName + "</b>" + "<br/>" 
+        + "<a href=" + d.link + ' target="_blank"' + "><b>Link</b></a>" + "<br/>" + "Photo:"; })
         .append('img')
         .attr('class', 'toolTip')
         .attr('width', 340)
@@ -66,7 +71,10 @@ d3.json('data/colorCats.json').then(function(data){
         .selectAll("text")
         .data(d.data)
         .join("text")
-        .html(function(d) { return  "Name: " + "<b>" + d.title + "</b>" + "<br/>" + "Carat Weight: " + "<b>" + d.caratWeight + "</b>" + "<br/>" + "Description: " + "<b>" + d.lowercaseName + "</b>" + "<br/>" + "Photo:"; })
+        .html(function(d) { return  "Name: " + "<b>" + d.title + "</b>" + "<br/>" 
+        + "Carat Weight: " + "<b>" + d.caratWeight + "</b>" + "<br/>" 
+        + "Description: " + "<b>" + d.lowercaseName + "</b>" + "<br/>" 
+        + "<a href=" + d.link + ' target="_blank"' + "><b>Link</b></a>" + "<br/>" + "Photo:"; })
         .append('img')
         .attr('class', 'toolTip')
         .attr('width', 340)

@@ -1,6 +1,6 @@
 
 const fs = require('fs')
-let data =  JSON.parse(fs.readFileSync('../../data/dataFiltered.json'));
+let data =  JSON.parse(fs.readFileSync('../../data/data.json'));
 // console.log(data);
 let colorCount = [];
 
@@ -84,6 +84,7 @@ function groupColors(data){
     console.log(data);
     data.forEach(d=>{
         console.log(d.name);
+    let objectID = d.objectID
     let lowercaseName = d.color.toLowerCase()
     let title = d.title
     let longitude = d.longitude
@@ -91,147 +92,173 @@ function groupColors(data){
     let caratWeight = d.caratWeight
     let primaryImage = d.primaryImage
     let filename = d.filename
+    let link = d.link
     if (lowercaseName.includes("pink") 
         && !lowercaseName.includes("red")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].DeepPink.push({lowercaseName,
+        gemColors[0].DeepPink.push({
+            objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("red") 
         && !lowercaseName.includes("orange")
         && !lowercaseName.includes("purple")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].red.push({lowercaseName,
+        gemColors[0].red.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("red") 
         && lowercaseName.includes("orange")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].orangeRed.push({lowercaseName,
+        gemColors[0].orangeRed.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("orange") 
         || lowercaseName.includes("brown") 
         && !lowercaseName.includes("yellow")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].DarkOrange.push({lowercaseName,
+        gemColors[0].DarkOrange.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("yellow") 
         && lowercaseName.includes("orange")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].orange.push({lowercaseName,
+        gemColors[0].orange.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("yellow") 
         && !lowercaseName.includes("orange")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].gold.push({lowercaseName,
+        gemColors[0].gold.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("yellow") 
         && lowercaseName.includes("green")) {
-        gemColors[0].greenyellow.push({lowercaseName,
+        gemColors[0].greenyellow.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("yellow") 
         && lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].limegreen.push({lowercaseName,
+        gemColors[0].limegreen.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("green") 
         && !lowercaseName.includes("yellow") 
         && !lowercaseName.includes("dark")
         && !lowercaseName.includes("blue")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].seagreen.push({lowercaseName,
+        gemColors[0].seagreen.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("green") 
         && lowercaseName.includes("dark") 
         && !lowercaseName.includes("yellow") 
         && !lowercaseName.includes("blue")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].mediumseagreen.push({lowercaseName,
+        gemColors[0].mediumseagreen.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("green") 
         && lowercaseName.includes("blue") 
         && !lowercaseName.includes("yellow")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].lightseagreen.push({lowercaseName,
+        gemColors[0].lightseagreen.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("blue") 
         && lowercaseName.match("light") 
         && !lowercaseName.includes("yellow")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].deepskyblue.push({lowercaseName,
+        gemColors[0].deepskyblue.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("blue")  
         && !lowercaseName.includes("red") 
@@ -240,13 +267,15 @@ function groupColors(data){
         && !lowercaseName.includes("purple")
         && !lowercaseName.includes("violet")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].dodgerblue.push({lowercaseName,
+        gemColors[0].dodgerblue.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("blue") 
         && lowercaseName.includes("medium")
@@ -257,13 +286,15 @@ function groupColors(data){
         && !lowercaseName.includes("purple")
         && !lowercaseName.includes("violet")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].blue.push({lowercaseName,
+        gemColors[0].blue.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("blue")  
         && lowercaseName.includes("red")
@@ -271,69 +302,81 @@ function groupColors(data){
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("dark")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].navy.push({lowercaseName,
+        gemColors[0].navy.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("purple")  
         || lowercaseName.includes("violet")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].indigo.push({lowercaseName,
+        gemColors[0].indigo.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("indigo")  
         || lowercaseName.includes("violet")
         && !lowercaseName.includes("green")
         && !lowercaseName.includes("gray")) {
-        gemColors[0].purple.push({lowercaseName,
+        gemColors[0].purple.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("various")  
         || lowercaseName.includes("multi")
         || lowercaseName.includes("rainbow")) {
-        gemColors[0].rainbow.push({lowercaseName,
+        gemColors[0].rainbow.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("colorless")  
         || lowercaseName.includes("clear")
         || lowercaseName.includes("white")) {
-        gemColors[0].white.push({lowercaseName,
+        gemColors[0].white.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     if (lowercaseName.includes("gray")  
         || lowercaseName.includes("black")
         || lowercaseName.includes("grey")) {
-        gemColors[0].blackGrey.push({lowercaseName,
+        gemColors[0].blackGrey.push({objectID,
+            lowercaseName,
             title,
             longitude,
             latitude,
             caratWeight,
             primaryImage,
-            filename})
+            filename,
+            link})
     }
     });
     console.log(gemColors);
